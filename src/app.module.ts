@@ -5,6 +5,8 @@ import { GoogleStrategy } from './nest-module/auth/strategies/google-plus.strate
 import { AuthModule } from './nest-module/auth/auth.module';
 import { UsersModule } from './nest-module/users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
+import { UsersController } from './nest-module/users/users.controller';
 
 @Module({
   imports: [
@@ -16,15 +18,17 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       password: 'ali1234',
       database: 'postgres',
       schema: 'software_developer_challenge',
+      entities: ['dist/**/*.entity{.ts,.js}'],
       autoLoadEntities: true,
       synchronize: true,
       retryDelay: 3000,
       retryAttempts: 10,
+      namingStrategy: new SnakeNamingStrategy(),
     }),
     AuthModule,
     UsersModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, UsersController],
   providers: [AppService, GoogleStrategy],
 })
 export class AppModule {}

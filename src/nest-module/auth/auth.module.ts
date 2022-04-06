@@ -8,9 +8,12 @@ import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './constants/jwt';
 import { AuthController } from './auth.controller';
 import { GoogleStrategy } from './strategies/google-plus.strategy';
+import { User } from 'src/entities/users/user.entity';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
+    TypeOrmModule.forFeature([User]),
     UsersModule,
     PassportModule,
     JwtModule.register({
