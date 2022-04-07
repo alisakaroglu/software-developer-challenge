@@ -5,9 +5,9 @@ import { Injectable } from '@nestjs/common';
 export class GoogleStrategy extends PassportStrategy(Strategy, 'google'){
     constructor(){
         super({
-            clientID: '701520691505-b638gle09keef5j99307umfa7834jonf.apps.googleusercontent.com',
-            clientSecret: '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',
-            callbackURL: 'http://localhost:3000/auth/google/callback',
+            clientID: '701520691505-7av5hv5uhvpukm27v93nbeghptotae67.apps.googleusercontent.com',
+            clientSecret: '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',
+            callbackURL: 'https://challenge.alisakaroglu.com/auth/google/callback',
             scope: ['email','profile']
         });
     }
